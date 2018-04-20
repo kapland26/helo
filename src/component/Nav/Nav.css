@@ -6,3 +6,7 @@
     justify-content: space-around;
     flex-direction: column;
 }
+.Nav img{
+    height:100px;
+    width:auto;
+}
