@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {updateUsername, updateId, updateProfPic} from '../../ducks/reducer.js';
 
 class Auth extends Component {
 
@@ -14,13 +16,11 @@ class Auth extends Component {
     }
 
     handleUserIn(e){
-        console.log("In user! "+ e)
         this.setState({
             usernameIn: e
         })
     }
     handlePassIn(e){
-        console.log("In pass! "+ e)
         this.setState({
             passwordIn: e
         })
@@ -36,8 +36,12 @@ class Auth extends Component {
             username: this.state.usernameIn,
             password: this.state.passwordIn
         }
+        let self = this;
         axios.post("/api/newuser", body).then(function (response) {
-            console.log(response);
+            let {profile_pic, username, id} = response.data[0];
+            self.props.updateUsername(username);
+            self.props.updateId(id);
+            self.props.updateProfPic(profile_pic);
         })
         .catch(function (error) {
             alert("Bad register!");
@@ -49,10 +53,15 @@ class Auth extends Component {
             username: this.state.usernameIn,
             password: this.state.passwordIn
         }
+        let self = this;
         axios.post("/api/user", body).then(function (response) {
-            console.log(response);
+            let {profile_pic, username, id} = response.data[0];
+            self.props.updateUsername(username);
+            self.props.updateId(id);
+            self.props.updateProfPic(profile_pic);
         })
         .catch(function (error) {
+            console.log(error)
             alert("Bad login!");
         });
         this.clear();
@@ -74,5 +83,4 @@ class Auth extends Component {
     }
 }
 
-// export default connect(mapStateToProps, {})(Auth);
-export default Auth;
+export default connect(null, {updateUsername, updateId, updateProfPic})(Auth);

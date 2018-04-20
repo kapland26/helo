@@ -28,5 +28,8 @@ module.exports = {
                 res.status(500).send(err);
             });    
     },
-
+    // getOne:(req, res) =>{
+    //     const connection = req.app.get('db');
+    //     connection.get_user([])
+    // }
 }
