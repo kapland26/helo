@@ -28,8 +28,10 @@ module.exports = {
                 res.status(500).send(err);
             });    
     },
-    // getOne:(req, res) =>{
-    //     const connection = req.app.get('db');
-    //     connection.get_user([])
-    // }
+    getOne:(req, res) =>{
+        let user = req.query.username;
+        console.log(username);
+        // const connection = req.app.get('db');
+        // connection.get_user([])
+    }
 }

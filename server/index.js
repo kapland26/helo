@@ -5,8 +5,6 @@ const session = require('express-session');
 const massive = require('massive');
 const hc = require('./controller.js');
 
-const checkForSession = require('./middlewares/checkForSession');
-
 const app = express();
 const{
     CONNECTION_STRING,
@@ -27,10 +25,9 @@ app.use(session({
     saveUninitialized: true
 }))
 
-app.use( checkForSession );
 app.post("/api/newuser", hc.create);
 app.post("/api/user", hc.login);
-// app.get("/api/user",hc.getOne);
+app.get("/api/user?q=username",hc.getOne);
 
 const port = process.env.PORT || 3005;
 app.listen( port, () => { console.log(`Server listening on port ${port}.`); } );
