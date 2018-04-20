@@ -3,6 +3,9 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {updateUsername, updateId, updateProfPic} from '../../ducks/reducer.js';
+import logo from "./logo.png";
+import './../../reset.css';
+import './Auth.css';
 
 class Auth extends Component {
 
@@ -68,8 +71,9 @@ class Auth extends Component {
     }
     render(){
         return (
-            <div>
-                Auth
+            <div className="Auth">
+                <img src={logo} alt='log'/>
+                <h1>Helo</h1>
                 <br/><br/>
                 <h3>Username</h3>
                 <input onChange={(e)=> this.handleUserIn(e.target.value)} type="text" value={this.state.usernameIn}/>

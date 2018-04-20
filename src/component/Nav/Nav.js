@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-// import './Nav.css';
+import './../../reset.css';
+import './Nav.css';
 
 function Nav( props ) {
 

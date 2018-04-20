@@ -11,7 +11,9 @@ class App extends Component {
     return (
       <div className = "App">
       <Nav/>
-        {routes}
+        <div className = "body-container">
+          {routes}
+        </div>
       </div>
     );
   }
