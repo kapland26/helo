@@ -16,5 +16,8 @@ massive(CONNECTION_STRING).then( db => {
     console.log("Database connected")
 });
 
+app.post("/api/newuser", hc.create);
+app.post("/api/user", hc.login);
+
 const port = process.env.PORT || 3005;
 app.listen( port, () => { console.log(`Server listening on port ${port}.`); } );
